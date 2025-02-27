@@ -1,0 +1,68 @@
+# Byte-compiled / compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environment
+venv/
+.env/
+.venv/
+env/
+ENV/
+
+# VS Code settings
+.vscode/
+
+# Pipenv, Poetry, and other dependency managers
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Environment variables
+.env
+*.env
+
+# Logs and database files
+*.log
+*.sqlite3
+*.db
+*.sqlite
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Cache and temporary files
+.cache/
+*.bak
+*.swp
+*.swo
+*.DS_Store
+
+# MacOS-specific files
+.DS_Store
+
+# Windows-specific files
+Thumbs.db
+
+# Testing and coverage reports
+.coverage
+htmlcov/
+*.cover
+*.py,cover
+nosetests.xml
+test-results/
+junit.xml
+
+# MyPy and type checking
+.mypy_cache/
+.dmypy.json
+.pyre/
+
+# PyInstaller
+dist/
+build/
+*.spec
+
+# PyCharm
+.idea/
+*.iml
