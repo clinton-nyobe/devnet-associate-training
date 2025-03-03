@@ -48,6 +48,46 @@ def get_network_devices(dnac_host:str, auth_token:str) -> list:
         print(f"Failed to get the devices, unusual behaviour : {e}")
         exit(1)
 
+def get_network_device_by_ip_address(dnac_host:str, auth_token:str, ip_address:str) -> dict:
+    """Get a device from its IP address
+
+    Args:
+        dnac_host (str): the domain name of the DNAC instance
+        auth_token (str): the authentication token
+        ip_address (str): the IP address of the Switch to get
+    
+    Return:
+        dict: data about a device with that management IP address
+    """
+    try:
+        # Endpoint URL
+        endpoint = f"/dna/intent/api/v1/network-device/ip-address/{ip_address}"
+        url = f"https://{dnac_host}{endpoint}"
+
+
+        # The header of the request
+        headers = {
+            "x-auth-token": auth_token 
+        } 
+
+        # The GET request
+        response = requests.get(url=url, headers=headers, verify=False)
+        if response.status_code == 200:
+            print(f"Request to get Device with IP {ip_address} was successful")
+            
+            # Get the list of devices
+            device = response.json().get("response")
+            return device
+
+        else:
+            print(f"Failed to get the Device : {response.status_code} - {response.text}")
+            return {}
+        
+    except Exception as e:
+        print(f"Failed to get the device with IP {ip_address}, unusual behaviour : {e}")
+        exit(1)
+
+
 def print_device_list(device_list:list):
     """Function to print the device list in a pretty way
 
@@ -75,7 +115,6 @@ def print_device_list(device_list:list):
                          device['softwareVersion'],
                          device['role'], uptime))
     
-
 
     
 # def get_network_device_by_ip()
